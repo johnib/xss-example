@@ -1,12 +1,14 @@
 'use strict';
 
 /** configurations */
-const PORT = process.env.PORT || 1234;
+const SERVER_PORT = process.env.PORT || 1234;
+const WEB_SOCKET_PORT = process.env.WEBSOCKET_PORT || 8001;
 
 /** deps */
 const log = require('./infra/logger')
   , express = require('express')
   , morgan = require('morgan')
+  , ws = require('nodejs-websocket')
   , bodyParser = require('body-parser');
 
 /** express */
@@ -20,7 +22,19 @@ app.get('/*', (req, res) => {
   res.status(200).end();
 });
 
+/** websocket */
+const websocket = ws.createServer(connection => {
+  log.info(`New connection from ${connection.headers.origin} - ID: ${connection.key}`);
+  connection.on('text', text => {
+    log.warning(`${connection.key}: ${text}`);
+  })
+});
+
 /** start */
-app.listen(PORT, () => {
-  log.info(`listening on http://localhost:${PORT}`);
+app.listen(SERVER_PORT, () => {
+  log.info(`Web server listening on http://localhost:${SERVER_PORT}`);
+});
+
+websocket.listen(WEB_SOCKET_PORT, () => {
+  log.info(`Websockets listening on ws://localhost:${WEB_SOCKET_PORT}`);
 });

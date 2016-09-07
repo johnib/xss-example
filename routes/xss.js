@@ -22,7 +22,7 @@ function generateHtml(req, res, next) {
   let html = fs.readFileSync('htmls/index.html').toString();
   const commentsHtml = comments.getAll()
     .reduce((prev, current) => {
-      return prev.concat(`<div>${current.text}</div>`)
+      return prev.concat(`<div class="comment">${current.text}</div>`)
     }, "");
 
   req.html = html.replace("<%= comments %>", commentsHtml);

