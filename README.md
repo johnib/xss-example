@@ -21,6 +21,7 @@ This project is a simple example of a website that allows adding and viewing
 comments.
 
 It comes with two versions:
+
 1. XSS-proof: `http://localhost:3000/`.
 2. XSS-vulnerable: `http://localhost:3000/xss`
 
@@ -29,6 +30,7 @@ notice that once the page is reloaded - the malicious code actually executes.
 
 ## How to demo
 I have added two examples:
+
 1. LocalStorage theft.
 2. Keylogging.
 
