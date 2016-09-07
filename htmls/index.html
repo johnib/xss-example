@@ -4,9 +4,10 @@
     <title>XSS example</title>
 </head>
 <body>
+<!--suppress HtmlUnknownTarget -->
 <form action="/xss/add-comment" name="add-comment" method="post">
     <div class="input">
-        <textarea name="text" cols="40" rows="5"></textarea>
+      <textarea name="text" cols="40" rows="5" title="comment"></textarea>
     </div>
     <div class="actions">
         <input type="submit" value="add comment">

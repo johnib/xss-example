@@ -16,6 +16,7 @@ router.post('/add-comment', comments.log, (req, res) => {
   res.redirect('/xss');
 });
 
+//noinspection JSUnusedLocalSymbols
 /** middlewares */
 function generateHtml(req, res, next) {
   let html = fs.readFileSync('htmls/index.html').toString();
