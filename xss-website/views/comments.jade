@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  form(action="/add-comment", name="add-comment", method="post")
+    div.input
+      textarea(name="text", cols="40", rows="5")
+    div.actions
+      input(type="submit", value="add comment")
+  for comment in comments
+    div= comment.text

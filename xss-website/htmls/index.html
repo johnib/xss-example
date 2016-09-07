@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XSS example</title>
+</head>
+<body>
+<form action="/xss/add-comment" name="add-comment" method="post">
+    <div class="input">
+        <textarea name="text" cols="40" rows="5"></textarea>
+    </div>
+    <div class="actions">
+        <input type="submit" value="add comment">
+    </div>
+</form>
+<%= comments %>
+</body>
+</html>
