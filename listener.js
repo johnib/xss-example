@@ -27,6 +27,14 @@ const websocket = ws.createServer(connection => {
   log.info(`New connection from ${connection.headers.origin} - ID: ${connection.key}`);
   connection.on('text', text => {
     log.warning(`${connection.key}: ${text}`);
+  });
+
+  connection.on('close', () => {
+    log.info(`Disconnect: client ${connection.headers.origin}`);
+  });
+
+  connection.on('error', (err) => {
+    log.error(`Connection Error: client ${connection.headers.origin}, message: ${err.message}`);
   })
 });
 
